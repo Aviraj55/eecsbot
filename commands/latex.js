@@ -29,13 +29,13 @@ module.exports = {
             message.channel.send("http://latex2png.com" + response.data.url);
           } else {
             message.channel.send(
-              "There was an error with the inputted LaTeX, please try again."
+              "There was an error with the format of the inputted LaTeX expression, please reformat and try again."
             );
           }
         },
         (error) => {
           message.channel.send(
-            "There was an error with the inputted LaTeX, please try again."
+            "There was an error with the LaTeX API, please try again."
           );
         }
       );
