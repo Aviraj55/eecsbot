@@ -17,6 +17,11 @@ module.exports = {
     ];
     const greeting = greetings[Math.floor(Math.random() * greetings.length)];
 
-    message.channel.send(greeting + " " + message.member.displayName);
+    message.channel.send(
+      greeting +
+        " " +
+        message.member.displayName +
+        " it's a great day to be an Anteater!"
+    );
   },
 };

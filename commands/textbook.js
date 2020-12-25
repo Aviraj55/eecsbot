@@ -21,9 +21,6 @@ module.exports = {
       case "eecs170lb":
         message.channel.send("https://");
         break;
-      case "eecs114":
-        message.channel.send("https://");
-        break;
       case "afam40b":
         message.channel.send("https://");
         break;
