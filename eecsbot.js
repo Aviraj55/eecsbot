@@ -39,6 +39,8 @@ client.on("message", (message) => {
     client.commands.get("ping").execute(message, args);
   } else if (command === "createchannel") {
     client.commands.get("createchannel").execute(message, args);
+  } else if (command === "hello") {
+    client.commands.get("hello").execute(message, args);
   }
 });
 
