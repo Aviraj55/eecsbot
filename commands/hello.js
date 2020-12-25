@@ -1,7 +1,10 @@
+const { default: axios } = require("axios");
+
 module.exports = {
   name: "hello",
   description: "say hi to Peter!",
-  execute(message, args) {
+  async execute(message, args) {
+    const url = "https://complimentr.com/api";
     const greetings = [
       "Hello",
       "Ciao",
@@ -17,11 +20,19 @@ module.exports = {
     ];
     const greeting = greetings[Math.floor(Math.random() * greetings.length)];
 
-    message.channel.send(
-      greeting +
-        " " +
-        message.member.displayName +
-        " it's a great day to be an Anteater!"
-    );
+    try {
+      const response = await axios.get(url);
+      compliment = response.data.compliment;
+      message.channel.send(
+        greeting +
+          " " +
+          message.member.displayName +
+          ". " +
+          compliment.charAt(0).toUpperCase() +
+          compliment.slice(1)
+      );
+    } catch (error) {
+      console.error("An error occurred connecting to complients API");
+    }
   },
 };

@@ -10,9 +10,10 @@ const fs = require("fs");
 
 client.commands = new Discord.Collection();
 
+// Make sure we're reading JavaScript files
 const commandFiles = fs
   .readdirSync("./commands")
-  .filter((file) => file.endsWith(".js")); // Make sure we're reading JS files
+  .filter((file) => file.endsWith(".js"));
 
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
@@ -35,12 +36,17 @@ client.on("message", (message) => {
   console.log(command);
   console.log(args);
 
-  if (command === "ping") {
-    client.commands.get("ping").execute(message, args);
-  } else if (command === "createchannel") {
-    client.commands.get("createchannel").execute(message, args);
-  } else if (command === "hello") {
-    client.commands.get("hello").execute(message, args);
+  if (!client.commands.has(command)) {
+    return message.channel.send(
+      "The command " + "'!" + command + "' does not exist."
+    );
+  }
+
+  try {
+    client.commands.get(command).execute(message, args);
+  } catch (error) {
+    console.error(error);
+    message.reply("There was an error trying to execute that command.");
   }
 });
 
