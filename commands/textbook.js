@@ -1,7 +1,7 @@
 module.exports = {
   name: "textbook",
   description:
-    "this command will send you the textbook for the specified class!",
+    "this command will send you the textbook for the specified class! (Currently incomplete)",
   example: "!textbook EECS40",
 
   execute(message, args) {

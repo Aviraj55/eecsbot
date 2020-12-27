@@ -3,6 +3,7 @@ const { default: axios } = require("axios");
 module.exports = {
   name: "hello",
   description: "say hi to Peter!",
+  example: "!hello",
   async execute(message, args) {
     const url = "https://complimentr.com/api";
     const greetings = [

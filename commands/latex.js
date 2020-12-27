@@ -3,6 +3,7 @@ const { default: axios } = require("axios");
 module.exports = {
   name: "latex",
   description: "this command will render a LaTeX expression into an image",
+  example: "!latex y = sum_{x=0}^{10} x^2",
   async execute(message, args) {
     latexExpression = args.join(" ");
 
@@ -24,7 +25,6 @@ module.exports = {
       })
       .then(
         (response) => {
-          console.log(response);
           if (response.data.url !== undefined) {
             message.channel.send("http://latex2png.com" + response.data.url);
           } else {

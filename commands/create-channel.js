@@ -8,10 +8,17 @@ module.exports = {
     }
 
     if (!message.member.hasPermission("ADMINISTRATOR")) {
-      message.guild.channel.send("Sorry you are not an admin of this server.");
+      return message.channel.send("Sorry you are not an admin of this server.");
     }
+
+    if (args.length < 1) {
+      return message.channel.send(
+        "!createchannel takes at least one argument for the channel name (0 provided)."
+      );
+    }
+
     try {
-      const channelName = args[0];
+      const channelName = args.join("-");
 
       message.guild.channels.create(channelName, {
         type: "text",
